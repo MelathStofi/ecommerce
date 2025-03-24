@@ -13,8 +13,12 @@ public class PhysicalProduct extends Product {
     private double height;
 
 
-    public PhysicalProduct(String name) {
+    public PhysicalProduct(String name, double weight, double length, double width, double height) {
         super(name);
+        this.weight = weight;
+        this.length = length;
+        this.width = width;
+        this.height = height;
     }
 
 
@@ -50,4 +54,13 @@ public class PhysicalProduct extends Product {
         this.height = height;
     }
 
+    @Override
+    public String toString() {
+        return "PhysicalProduct{" +
+                "weight=" + weight +
+                ", length=" + length +
+                ", width=" + width +
+                ", height=" + height +
+                "} " + super.toString();
+    }
 }

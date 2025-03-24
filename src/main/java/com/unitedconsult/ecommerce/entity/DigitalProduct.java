@@ -9,8 +9,10 @@ public class DigitalProduct extends Product {
     private String licenseKey;
 
 
-    public DigitalProduct(String name) {
+    public DigitalProduct(String name, String downloadLink, String licenseKey) {
         super(name);
+        this.downloadLink = downloadLink;
+        this.licenseKey = licenseKey;
     }
 
 
@@ -30,4 +32,11 @@ public class DigitalProduct extends Product {
         this.downloadLink = downloadLink;
     }
 
+    @Override
+    public String toString() {
+        return "DigitalProduct{" +
+                "downloadLink='" + downloadLink + '\'' +
+                ", licenseKey='" + licenseKey + '\'' +
+                "} " + super.toString();
+    }
 }
