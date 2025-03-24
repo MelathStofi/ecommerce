@@ -4,22 +4,19 @@ public abstract class Product {
 
     private static int prevId = 0;
 
-    private int id;
+    private long id;
 
     private String name;
 
     private double price;
 
     public Product(String name) {
-        this.id = prevId++;
-        prevId = this.id;
-
-        price = 149.9;
-
+        prevId++;
+        this.id = prevId;
         this.name = name;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
