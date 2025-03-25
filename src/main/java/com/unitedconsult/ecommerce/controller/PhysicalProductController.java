@@ -7,26 +7,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/products/physical")
-public class PhysicalProductController {
-
-    private PhysicalProductService physicalProductService;
+public class PhysicalProductController extends ProductController<PhysicalProduct, PhysicalProductService> {
 
     @Autowired
     public PhysicalProductController(PhysicalProductService physicalProductService) {
-        this.physicalProductService = physicalProductService;
-    }
-
-    @GetMapping(value = {"","/"})
-    @ResponseBody
-    public Iterable<PhysicalProduct> getPhysicalProducts() {
-        return physicalProductService.findAll();
-    }
-
-    @PostMapping("/add")
-    @ResponseBody
-    public PhysicalProduct addPhysicalProduct(PhysicalProduct physicalProduct) {
-        physicalProductService.save(physicalProduct);
-        return physicalProduct;
+        super(physicalProductService);
     }
 
 }

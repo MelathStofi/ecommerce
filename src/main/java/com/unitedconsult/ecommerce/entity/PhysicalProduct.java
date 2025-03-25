@@ -2,7 +2,8 @@ package com.unitedconsult.ecommerce.entity;
 
 import com.unitedconsult.ecommerce.model.Product;
 
-public class PhysicalProduct extends Product {
+
+public class PhysicalProduct extends Product implements Cloneable {
 
     private double weight;
 
@@ -12,9 +13,10 @@ public class PhysicalProduct extends Product {
 
     private double height;
 
+    public PhysicalProduct() {}
 
-    public PhysicalProduct(String name, double weight, double length, double width, double height) {
-        super(name);
+    public PhysicalProduct(String name, double price, double weight, double length, double width, double height) {
+        super(name, price);
         this.weight = weight;
         this.length = length;
         this.width = width;
@@ -55,6 +57,11 @@ public class PhysicalProduct extends Product {
     }
 
     @Override
+    public double getPrice() {
+        return super.getPrice() + weight * 0.3;
+    }
+
+    @Override
     public String toString() {
         return "PhysicalProduct{" +
                 "weight=" + weight +
@@ -63,4 +70,10 @@ public class PhysicalProduct extends Product {
                 ", height=" + height +
                 "} " + super.toString();
     }
+
+    @Override
+    public PhysicalProduct clone() throws CloneNotSupportedException {
+        return (PhysicalProduct) super.clone();
+    }
+
 }

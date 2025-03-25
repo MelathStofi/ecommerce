@@ -1,20 +1,16 @@
 package com.unitedconsult.ecommerce.repository;
 
-import org.springframework.stereotype.Repository;
-
-import java.io.Serializable;
-
 public interface CrudRepository<T> {
 
-    void save(T entity);
+    T save(T entity);
 
-    T findOne(long ID);
+    T findOne(Long ID);
 
     Iterable<T> findAll();
 
     long count();
 
-    void delete(T entity);
+    void delete(Long ID);
 
-    boolean exists(long primaryKey);
+    boolean exists(Long ID);
 }

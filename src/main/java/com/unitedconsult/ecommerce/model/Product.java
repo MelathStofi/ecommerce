@@ -2,23 +2,24 @@ package com.unitedconsult.ecommerce.model;
 
 public abstract class Product {
 
-    private static int prevId = 0;
-
-    private long id;
+    private Long id;
 
     private String name;
 
     private double price;
 
-    public Product(String name) {
-        prevId++;
-        this.id = prevId;
+    public Product() {}
+
+    public Product(String name, double price) {
         this.name = name;
+        this.price = price;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
+
+    public void setId(Long id) { this.id = id; }
 
     public String getName() {
         return name;
@@ -44,4 +45,5 @@ public abstract class Product {
                 ", price=" + price +
                 '}';
     }
+
 }

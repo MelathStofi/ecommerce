@@ -1,19 +1,23 @@
 package com.unitedconsult.ecommerce.service;
 
 import com.unitedconsult.ecommerce.model.Product;
-import com.unitedconsult.ecommerce.repository.ProductRepository;
+import com.unitedconsult.ecommerce.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public abstract class ProductService<T extends Product> {
 
-    protected ProductRepository<T> repo;
+    protected CrudRepository<T> repo;
 
-    public void save(T entity) {
-        repo.save(entity);
+    public ProductService(CrudRepository<T> productRepository) {
+        this.repo = productRepository;
     }
 
-    public T findOne(long ID) {
+    public T save(T entity) {
+        return repo.save(entity);
+    }
+
+    public T findOne(Long ID) {
         return repo.findOne(ID);
     }
 
@@ -25,8 +29,8 @@ public abstract class ProductService<T extends Product> {
         return repo.count();
     }
 
-    public void delete(T entity) {
-        repo.delete(entity);
+    public void delete(Long ID) {
+        repo.delete(ID);
     }
 
     public boolean exists(long ID) {
