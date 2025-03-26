@@ -15,5 +15,4 @@ public class DigitalProductController extends ProductController<DigitalProduct, 
         super(digitalProductService);
     }
 
-
 }

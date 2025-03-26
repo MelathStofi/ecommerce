@@ -46,4 +46,5 @@ public class DigitalProduct extends Product {
                 ", licenseKey='" + licenseKey + '\'' +
                 "} " + super.toString();
     }
+
 }

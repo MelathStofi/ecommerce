@@ -3,7 +3,7 @@ package com.unitedconsult.ecommerce.entity;
 import com.unitedconsult.ecommerce.model.Product;
 
 
-public class PhysicalProduct extends Product implements Cloneable {
+public class PhysicalProduct extends Product {
 
     private double weight;
 
@@ -69,11 +69,6 @@ public class PhysicalProduct extends Product implements Cloneable {
                 ", width=" + width +
                 ", height=" + height +
                 "} " + super.toString();
-    }
-
-    @Override
-    public PhysicalProduct clone() throws CloneNotSupportedException {
-        return (PhysicalProduct) super.clone();
     }
 
 }

@@ -25,6 +25,8 @@ public abstract class ProductService<T extends Product> {
         return repo.findAll();
     }
 
+    public T update(T entity) { return repo.update(entity); }
+
     public long count() {
         return repo.count();
     }
