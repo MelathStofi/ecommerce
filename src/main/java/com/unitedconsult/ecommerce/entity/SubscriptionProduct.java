@@ -36,7 +36,8 @@ public class SubscriptionProduct extends Product {
 
     @Override
     public double getPrice() {
-        return autoRenewal ? super.getPrice() * 0.9 : super.getPrice();
+        float proportionOfPrice = 0.9f;
+        return autoRenewal ? super.getPrice() * proportionOfPrice : super.getPrice();
     }
 
     @Override

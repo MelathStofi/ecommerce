@@ -36,7 +36,8 @@ public class DigitalProduct extends Product {
 
     @Override
     public double getPrice() {
-        return super.getPrice() * 0.9;
+        float proportionOfPrice = 0.9f;
+        return super.getPrice() * proportionOfPrice;
     }
 
     @Override

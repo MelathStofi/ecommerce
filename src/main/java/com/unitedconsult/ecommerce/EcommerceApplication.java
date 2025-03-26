@@ -12,13 +12,4 @@ public class EcommerceApplication {
         SpringApplication.run(EcommerceApplication.class, args);
     }
 
-//    @Bean
-//    CommandLineRunner init() {
-//        return args -> {
-//            PhysicalProduct prod = new PhysicalProduct("asd");
-//            physicalProductRepository.save(prod);
-//            System.out.println(physicalProductRepository.count());
-//        };
-//    }
-
 }

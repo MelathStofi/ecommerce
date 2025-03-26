@@ -13,6 +13,7 @@ public class PhysicalProduct extends Product {
 
     private double height;
 
+
     public PhysicalProduct() {}
 
     public PhysicalProduct(String name, double price, double weight, double length, double width, double height) {
@@ -58,7 +59,8 @@ public class PhysicalProduct extends Product {
 
     @Override
     public double getPrice() {
-        return super.getPrice() + weight * 0.3;
+        float proportionOfWeightForPrice = 0.3f;
+        return super.getPrice() + weight * proportionOfWeightForPrice;
     }
 
     @Override
