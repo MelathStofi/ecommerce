@@ -6,7 +6,7 @@ public interface CrudRepository<T> {
 
     T save(T entity);
 
-    T findOne(Long ID);
+    T findOne(Long ID) throws EntityNotFoundException;
 
     Iterable<T> findAll();
 

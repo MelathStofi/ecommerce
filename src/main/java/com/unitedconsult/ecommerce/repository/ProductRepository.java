@@ -3,11 +3,9 @@ package com.unitedconsult.ecommerce.repository;
 
 import com.unitedconsult.ecommerce.exception.EntityNotFoundException;
 import com.unitedconsult.ecommerce.model.Product;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
 import java.util.Objects;
 
 @Repository
@@ -16,11 +14,7 @@ public class ProductRepository<T extends Product> implements CrudRepository<T> {
     private static long prevId = 0;
 
     private final ArrayList<T> products = new ArrayList<>();
-    private final Environment environment;
 
-    public ProductRepository(Environment environment) {
-        this.environment = environment;
-    }
 
     @Override
     public T save(T entity) {
@@ -31,11 +25,11 @@ public class ProductRepository<T extends Product> implements CrudRepository<T> {
     }
 
     @Override
-    public T findOne(Long ID) {
+    public T findOne(Long ID) throws EntityNotFoundException {
         return products.stream()
                 .filter((Product prod)-> Objects.equals(prod.getId(), ID))
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(() -> new EntityNotFoundException(ID));
     }
 
     @Override
@@ -44,14 +38,14 @@ public class ProductRepository<T extends Product> implements CrudRepository<T> {
     }
 
     @Override
-    public T update(T entity) throws NoSuchElementException {
+    public T update(T entity) throws EntityNotFoundException {
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getId() == entity.getId()) {
                 products.set(i, entity);
                 return entity;
             }
         }
-        throw new EntityNotFoundException("ID not found: " + entity.getId());
+        throw new EntityNotFoundException(entity.getId());
     }
 
     @Override
@@ -62,7 +56,7 @@ public class ProductRepository<T extends Product> implements CrudRepository<T> {
     @Override
     public void delete(Long ID) throws EntityNotFoundException {
         if (!products.removeIf((T prod) -> Objects.equals(prod.getId(), ID))) {
-            throw new EntityNotFoundException("ID not found: " + ID);
+            throw new EntityNotFoundException(ID);
         }
     }
 
